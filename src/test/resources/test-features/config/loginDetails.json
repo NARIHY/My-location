@@ -1,0 +1,6 @@
+{
+  "url": "http://localhost:8082/realms/location/protocol/openid-connect/token",
+  "grant_type": "password",
+  "client_secret": "MB9JD6RBfZKxu7PGc2L0QY2jxdqe5ppE",
+  "client_id": "location"
+}

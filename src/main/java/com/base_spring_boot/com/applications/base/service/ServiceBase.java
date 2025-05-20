@@ -2,8 +2,8 @@ package com.base_spring_boot.com.applications.base.service;
 
 import com.base_spring_boot.com.security.service.OpenIdService;
 import com.base_spring_boot.com.applications.base.repository.criteria.CriteriaRepository;
-import com.base_spring_boot.com.applications.microservice.persistence.model.status.StatusEntity;
-import com.base_spring_boot.com.applications.microservice.persistence.repository.status.StatusEntityRepository;
+import com.base_spring_boot.com.applications.microservice.test.persistence.model.status.StatusEntity;
+import com.base_spring_boot.com.applications.microservice.test.persistence.repository.status.StatusEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

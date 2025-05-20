@@ -101,10 +101,9 @@ public class OpenIdService {
      * La logique de déconnexion complète est encore à implémenter.
      */
     public void logoutRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // À compléter selon les besoins de gestion de la déconnexion
+
     }
 
-    //getOidc user
     @PreAuthorize("this.isConnected()")
     public OidcUser getUserInfo() {
         var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -119,10 +118,6 @@ public class OpenIdService {
     }
 
 
-
-    /**
-     * Récupère le nom d'utilisateur actuel.
-     */
     public String getCurrentUserName() {
         var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof Jwt jwt) {
@@ -131,21 +126,11 @@ public class OpenIdService {
         return null;
     }
 
-    /**
-     * Vérifie si un utilisateur est connecté en vérifiant si le principal est un JWT.
-     */
     public boolean isConnected() {
         var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return principal instanceof Jwt;  // Retourne vrai si l'utilisateur est connecté via OpenID
+        return principal instanceof Jwt;
     }
 
-    /**
-     * Récupère la liste des rôles de l'utilisateur actuel.
-     */
-//    public List<? extends GrantedAuthority> getCurrentUserRoles() {
-//        var auth = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-//        return auth.stream().toList();
-//    }
     public  Collection<? extends GrantedAuthority> getCurrentUserRoles() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -176,23 +161,14 @@ public class OpenIdService {
         return Collections.emptyList();
     }
 
-    /**
-     * Vérifie si l'utilisateur actuel a le rôle ADMIN.
-     */
     public boolean isAdmin() {
         return getCurrentUserRoles().stream().anyMatch(authority -> Objects.equals(authority.getAuthority(), RolesEnum.ADMIN.getValue()));
     }
 
-    /**
-     * Vérifie si l'utilisateur actuel a le rôle DRIVER.
-     */
-    public boolean isDriver() {
-        return getCurrentUserRoles().stream().anyMatch(authority -> Objects.equals(authority.getAuthority(), RolesEnum.DRIVER.getValue()));
+    public boolean isPropriotary() {
+        return getCurrentUserRoles().stream().anyMatch(authority -> Objects.equals(authority.getAuthority(), RolesEnum.PROPRIOTARY.getValue()));
     }
 
-    /**
-     * Vérifie si l'utilisateur actuel a le rôle CLIENT.
-     */
     public boolean isClient() {
         return getCurrentUserRoles().stream().anyMatch(authority -> Objects.equals(authority.getAuthority(), RolesEnum.CLIENT.getValue()));
     }

@@ -4,7 +4,7 @@ package com.base_spring_boot.com.security.model.enums;
 public enum RolesEnum {
     ADMIN("ROLE_ADMIN"),
     CLIENT("ROLE_CLIENT"),
-    DRIVER("ROLE_DRIVER");
+    PROPRIOTARY("ROLE_PROPRIOTARY");
 
     private final String value;
 
